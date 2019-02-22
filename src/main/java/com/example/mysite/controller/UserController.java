@@ -66,6 +66,7 @@ public class UserController {
 	
 	@RequestMapping( value="/modify", method=RequestMethod.GET )
 	public String modify(HttpSession session, Model model ){
+		/* 접근제어 */
 		UserVo authUser = (UserVo)session.getAttribute("AuthUser");
 		if(authUser == null) {
 			return "rediurect:/";
