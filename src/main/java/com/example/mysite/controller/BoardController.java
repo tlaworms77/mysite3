@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mysite.service.BoardService;
+import com.example.mysite.service.SiteService;
 import com.example.mysite.vo.BoardVo;
+import com.example.mysite.vo.SiteVo;
 import com.example.mysite.vo.UserVo;
+import com.example.security.Auth;
 import com.example.web.util.WebUtil;
 
 @Controller
 @RequestMapping( "/board" )
 public class BoardController {
+	
 	@Autowired
 	private BoardService boardService;
 
@@ -100,16 +105,13 @@ public class BoardController {
 				"&kwd=" + WebUtil.encodeURL( keyword, "UTF-8" );
 	}
 	
+	@Auth
 	@RequestMapping( value="/write", method=RequestMethod.GET )	
-	public String write(HttpSession session) {
-		/* 접근제어 */
-		if(null == session.getAttribute("authUser")) {
-			return "redirect:/";
-		}
-		
+	public String write() {
 		return "board/write";
 	}
 
+	@Transactional
 	@RequestMapping( value="/write", method=RequestMethod.POST )	
 	public String write(
 		HttpSession session,

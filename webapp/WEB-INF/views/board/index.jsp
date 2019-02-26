@@ -33,7 +33,7 @@
 							<c:choose>
 								<c:when test="${vo.depth > 0 }">
 									<td class="left" style="padding-left:${20*vo.depth }px">
-										<img src="${pageContext.request.contextPath }/assets/images/reply.png">
+										<img src="${pageContext.request.contextPath }/assets/images/reply.png" width="10">
 										<a href="${pageContext.request.contextPath }/board/view/${vo.no }?p=${map.currentPage }&kwd=${map.keyword }">${vo.title }</a>
 									</td>
 								</c:when>

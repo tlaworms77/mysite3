@@ -28,7 +28,6 @@ public class UserDao {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put( "email", email );
 		map.put( "password", password );
-		
 		return sqlSession.selectOne( "user.getByEmailAndPassword", map );
 	}
 	

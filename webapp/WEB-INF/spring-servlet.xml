@@ -8,13 +8,66 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
+	<!--  auto proxy -->
+	<aop:aspectj-autoproxy />
+	
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven>
+		<!-- Message Converter -->
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+			    <property name="supportedMediaTypes">
+			        <list>
+			             <value>text/html; charset=UTF-8</value>
+			        </list>
+			    </property>
+			</bean>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			   <property name="supportedMediaTypes">
+			       <list>
+			            <value>application/json; charset=UTF-8</value>
+			        </list>
+			   </property>
+			</bean>
+			
+		</mvc:message-converters>	
+		
+		<!-- Controller의 Handler의 Argument Resolver 등록 -->
+		<mvc:argument-resolvers>
+			<bean class="com.example.security.AuthUserHandlerMethodArgumentResolver" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
 
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		
+		<!-- MyInterceptor01 -->
+		<!--mvc:interceptor>
+			<mvc:mapping path="/guestbook/**"/>
+			<bean class="com.example.mysite.interceptor.MyInterceptor02"/>
+		</mvc:interceptor-->
+		<mvc:interceptor>
+			<mvc:mapping path="/user/auth"/>
+			<bean class="com.example.security.AuthLoginInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/logout"/>
+			<bean class="com.example.security.AuthLogoutInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/user/auth"/>
+			<mvc:exclude-mapping path="/user/logout"/>
+			<mvc:exclude-mapping path="/assets/*"/>
+			<bean class="com.example.security.AuthInterceptor"/>
+		</mvc:interceptor>
+		
+		
+	</mvc:interceptors>
+	
 	<!-- 뷰 리졸버 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

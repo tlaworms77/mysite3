@@ -19,8 +19,8 @@ var FormValidator = {
 	$inputTextEmail: null,
 	
 	init: function() {
-		this.$imageCheck = $( "#check-image" );
-		this.$buttonCheckEmail = $( "#check-button" );
+		this.$imageCheck = $( "#img-checkemail" );
+		this.$buttonCheckEmail = $( "#btn-checkemail" );
 		this.$inputTextEmail = $( "#email" );
 		
 		this.$inputTextEmail.change( this.onEmailInputTextChanged.bind( this ) );
@@ -32,7 +32,6 @@ var FormValidator = {
 		this.$buttonCheckEmail.show();		
 	},	
 	onCheckEmailButtonClicked: function( event ) {
-		
 		console.log( event.currentTarget );
 		
 		var email = this.$inputTextEmail.val();
@@ -51,7 +50,11 @@ var FormValidator = {
 		} );	
 	},
 	onCheckEmailAjaxSuccess: function( response ) {
-		console.log( response );
+		if(response.result == "fail"){
+			console.error(response.message);
+			return;
+		}
+		
 		if( response.data == true ) {
 			alert( "이미 존재하는 이메일 입니다. 다른 이메일을 사용해 주세요." );
 			// email 입력 창 비우고 포커싱
@@ -108,7 +111,7 @@ var FormValidator = {
 }
 
 $(function(){
-	//FormValidator.init();
+	FormValidator.init();
 });
 </script>
 </head>

@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>ooops!</h1>
+	<h1>ooops!-${uri }</h1>
 	<p>
 		죄송합니다.<br>
 		서비스 사용 중 장애가 발생했습니다.<br>

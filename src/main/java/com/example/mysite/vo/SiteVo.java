@@ -2,45 +2,38 @@ package com.example.mysite.vo;
 
 public class SiteVo {
 	private String title;
-	private String welcomeMessage;
-	private String profileURL;
-	private String description;
+	private String welcome;
+	private String profile;
+	private String desc;
 	
 	public String getTitle() {
 		return title;
 	}
-	
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	public String getWelcomeMessage() {
-		return welcomeMessage;
+	public String getWelcome() {
+		return welcome;
+	}
+	public void setWelcome(String welcome) {
+		this.welcome = welcome;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	
-	public void setWelcomeMessage(String welcomeMessage) {
-		this.welcomeMessage = welcomeMessage;
-	}
-	
-	public String getProfileURL() {
-		return profileURL;
-	}
-	
-	public void setProfileURL(String profileURL) {
-		this.profileURL = profileURL;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	@Override
 	public String toString() {
-		return "SiteVo [title=" + title + ", welcomeMessage=" + welcomeMessage + ", profileURL=" + profileURL
-				+ ", description=" + description + "]";
+		return "SiteVo [title=" + title + ", welcome=" + welcome + ", profile=" + profile + ", desc=" + desc + "]";
 	}
+	
 }
