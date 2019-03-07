@@ -44,8 +44,7 @@
 	</mvc:annotation-driven>
 
 	<!-- the mvc resources mapping url(virtual) -->
-	<mvc:resources mapping="/uploads/images/**"
-		location="file:/uploads/" />
+	<mvc:resources mapping="/uploads/images/**" location="file:/uploads/" />
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />

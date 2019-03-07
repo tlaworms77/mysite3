@@ -15,6 +15,7 @@
 		update site
 		   set title = #{title},
 			   welcome_message = #{welcome},
+			   profile_url = #{profile},
 			   description = #{desc}
 		]]>
 	</update>

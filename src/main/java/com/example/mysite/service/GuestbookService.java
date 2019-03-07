@@ -30,4 +30,22 @@ public class GuestbookService {
 		int count = guestbookDao.insert(vo);
 		return count == 1;
 	}
+
+	public List<GuestbookVo> getAjaxList(int page) {
+		return guestbookDao.getAjaxList(page);
+	}
+
+	public void insert(String name, String password, String message) {
+		boolean result = 1 == guestbookDao.insert(name, password, message);
+		System.out.println("ajaxGuestbook's insert result <" + result + ">");
+	}
+
+	public long getLastId() {
+		return guestbookDao.getLastId();
+	}
+
+	public List<GuestbookVo> getLatelyAddList(int page, long lastId) {
+		return guestbookDao.getLatelyList(page, lastId);
+	}
+	
 }
