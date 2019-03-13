@@ -55,6 +55,8 @@
 	</servlet-mapping>
 
 	<!-- 공통 에러 페이지 -->
+	<!-- 서비스 릴리즈할 때 반영 -->
+	<!-- 개발할 때는 꺼둘 것 jsp단으로 포워딩시켜서 에러가 안보인다. -->
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/error/404.jsp</location>
