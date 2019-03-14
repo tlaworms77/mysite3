@@ -143,7 +143,7 @@
 			<build>
 				<resources>
 					<resource>
-						<directory>${project.basedir}/src/main/resources</directory>
+						<directory>${project.basedir}/src/main/development</directory>
 						<excludes>
 							<exclude>**/*.java</exclude>
 						</excludes>
