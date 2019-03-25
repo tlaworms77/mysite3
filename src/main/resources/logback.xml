@@ -30,7 +30,7 @@
 		</triggeringPolicy>
 	</appender>
 
-	<logger name="com.example.mysite.controller"  level="info" additivity="false">
+	<logger name="com.douzone.mysite.controller"  level="info" additivity="false">
             <appender-ref ref="fileAppender" />
     </logger>
 	
